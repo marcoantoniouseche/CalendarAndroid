@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.rand.calendar"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.rand.calendar"
