@@ -16,8 +16,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        text = findViewById(R.id.showText)
-        button = findViewById(R.id.button)
+        text = findViewById(R.id.textDate)
+        button = findViewById(R.id.buttonShowDate)
 
         button.setOnClickListener {
             openDialog()
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
                     val day = dialogDate.datePicker.dayOfMonth
                     val month = dialogDate.datePicker.month
                     val year = dialogDate.datePicker.year
-                    Toast.makeText(this, formattedDate(day, month, year), Toast.LENGTH_LONG).show()
+                    text.text = formattedDate(day, month, year)
                 }
         )
         dialogDate.show()
