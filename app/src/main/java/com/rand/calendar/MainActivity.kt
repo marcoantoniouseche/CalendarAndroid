@@ -1,10 +1,12 @@
 package com.rand.calendar
 
 import android.app.DatePickerDialog
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
     private lateinit var text: TextView
@@ -23,7 +25,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openDialog() {
-        val dialog = DatePickerDialog(this)
-        dialog.show()
+        val dialogDate = DatePickerDialog(this)
+        dialogDate.setButton(DialogInterface.BUTTON_POSITIVE, "React",
+            DialogInterface.OnClickListener
+                { dialog, which ->
+                    val day = dialogDate.datePicker.dayOfMonth
+                    val month = dialogDate.datePicker.month
+                    val year = dialogDate.datePicker.year
+                    Toast.makeText(this, formattedDate(day, month, year), Toast.LENGTH_LONG).show()
+                }
+        )
+        dialogDate.show()
+    }
+
+    private fun formattedDate(day: Int, month: Int, year: Int): String {
+        return "$day/${month + 1}/$year"
     }
 }
